@@ -119,3 +119,10 @@ pnpm-debug.log*
 *.temp
 *.bak
 *.backup
+
+# Public project screenshots
+!screenshots/
+!screenshots/*.png
+!screenshots/*.jpg
+!screenshots/*.jpeg
+!screenshots/*.webp
