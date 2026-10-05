@@ -1,0 +1,39 @@
+DATASENSEAI/
+│
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── backend/
+│   ├── app.py
+│   ├── routes.py
+│   ├── config.py
+│   └── ...
+│
+├── frontend/
+│   └── static/
+│       ├── css/
+│       ├── js/
+│       └── ...
+│
+├── templates/
+│   ├── base.html
+│   ├── login.html
+│   ├── register.html
+│   ├── upload.html
+│   ├── cleaner.html
+│   ├── visualizer.html
+│   └── ...
+│
+├── services/
+│   ├── connectors/
+│   ├── profiling/
+│   ├── cleaning/
+│   ├── analysis/
+│   ├── visualization/
+│   ├── reporting/
+│   └── ai/
+│
+├── uploads/
+├── exports/
+└── temp/

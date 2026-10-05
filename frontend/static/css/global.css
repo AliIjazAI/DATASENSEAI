@@ -1,0 +1,226 @@
+/* =========================================================
+   🌐 GLOBAL DESIGN SYSTEM (BASE THEME VARIABLES)
+========================================================= */
+:root {
+
+  /* ================= CORE DARK BASE ================= */
+  --bg-main: #0b0f19;
+  --bg-card: #161b22;
+  --bg-panel: #111827;
+  --bg-hover: #1f2937;
+
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+
+  --shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  /* ================= CLEANER (GREEN THEME) ================= */
+  --cleaner-primary: #22c55e;
+  --cleaner-soft: rgba(34,197,94,0.12);
+
+  /* ================= VISUALIZER (BLUE THEME) ================= */
+  --viz-primary: #3b82f6;
+  --viz-soft: rgba(59,130,246,0.12);
+
+  /* ================= JPSCRAPER (BROWN/ORANGE/RED) ================= */
+  --jp-primary: #f97316;
+  --jp-secondary: #ef4444;
+  --jp-accent: #92400e;
+  --jp-soft: rgba(249,115,22,0.12);
+
+  /* ================= LEADGENAI (GOOGLE COLORS) ================= */
+  --google-blue: #4285F4;
+  --google-red: #EA4335;
+  --google-yellow: #FBBC05;
+  --google-green: #34A853;
+}
+
+/* =========================================================
+   🔥 GLOBAL BODY
+========================================================= */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   🧠 CLEANER PAGE (GREEN MULTI SHADE THEME)
+========================================================= */
+.cleaner-page body {
+  background: linear-gradient(-45deg, #052e16, #14532d, #166534, #0f3d22);
+  background-size: 400% 400%;
+  animation: cleanerBG 15s ease infinite;
+}
+
+@keyframes cleanerBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Cleaner accents */
+.cleaner-btn { background: var(--cleaner-primary); }
+.cleaner-card { border-left: 3px solid var(--cleaner-primary); }
+.cleaner-glow { box-shadow: 0 0 20px rgba(34,197,94,0.4); }
+
+/* =========================================================
+   📊 VISUALIZER PAGE (BLUE MULTI SHADE THEME)
+========================================================= */
+.visualizer-page body {
+  background: linear-gradient(-45deg, #0a1a26, #0f2e3b, #011b26, #0a1a26);
+  background-size: 400% 400%;
+  animation: vizBG 15s ease infinite;
+}
+
+@keyframes vizBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.visualizer-btn { background: var(--viz-primary); }
+.visualizer-card { border-left: 3px solid var(--viz-primary); }
+
+/* =========================================================
+   🧠 JPSCRAPER PAGE (ORANGE + RED + BROWN THEME)
+========================================================= */
+.jp-page body {
+  background: linear-gradient(-45deg, #3b1d0f, #7c2d12, #ef4444, #f97316);
+  background-size: 400% 400%;
+  animation: jpBG 14s ease infinite;
+}
+
+@keyframes jpBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.jp-btn { background: var(--jp-primary); }
+.jp-danger { background: var(--jp-secondary); }
+.jp-card { border-left: 3px solid var(--jp-primary); }
+
+/* =========================================================
+   🔍 LEADGENAI PAGE (GOOGLE COLORS THEME)
+========================================================= */
+.leadgen-page body {
+  background: linear-gradient(135deg, #202124, #303134);
+}
+
+/* Google accents */
+.google-blue { color: var(--google-blue); }
+.google-red { color: var(--google-red); }
+.google-yellow { color: var(--google-yellow); }
+.google-green { color: var(--google-green); }
+
+.google-btn {
+  background: linear-gradient(90deg,
+    var(--google-blue),
+    var(--google-red),
+    var(--google-yellow),
+    var(--google-green)
+  );
+  color: white;
+}
+
+/* =========================================================
+   🧱 SHARED UI COMPONENTS (ALL PAGES)
+========================================================= */
+
+/* Sidebar */
+aside#sidebar {
+  width: 260px;
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Topbar */
+header {
+  background: var(--bg-panel);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Cards */
+.card, .panel {
+  background: rgba(17,24,39,0.7);
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: 0.2s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Inputs */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(31,41,55,0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* Tables */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+}
+
+/* =========================================================
+   📱 RESPONSIVE
+========================================================= */
+@media (max-width: 1024px) {
+  aside#sidebar { width: 220px; }
+}
+
+@media (max-width: 768px) {
+  aside#sidebar {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

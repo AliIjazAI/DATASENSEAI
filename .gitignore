@@ -1,0 +1,121 @@
+# ==========================================
+# DATASENSEAI - Git Ignore
+# ==========================================
+
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# ------------------------------
+# Environment / Secrets
+# ------------------------------
+.env
+.env.*
+!.env.example
+
+*.key
+*.pem
+secrets.json
+credentials.json
+
+# ------------------------------
+# User / Authentication Data
+# ------------------------------
+backend/users.json
+
+# ------------------------------
+# Uploaded / Generated Data
+# ------------------------------
+uploads/
+exports/
+temp/
+
+# Real datasets
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.parquet
+*.json
+
+# Allow important project JSON files if needed later
+# Add specific exceptions above if required.
+
+# ------------------------------
+# Databases
+# ------------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# ------------------------------
+# Logs
+# ------------------------------
+*.log
+logs/
+
+# ------------------------------
+# Selenium / Browser Artifacts
+# ------------------------------
+screenshots/
+downloads/
+selenium/
+chromedriver.log
+
+# ------------------------------
+# OS Files
+# ------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ------------------------------
+# IDE / Editors
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+# Jupyter
+# ------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------
+# Build / Cache
+# ------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# ------------------------------
+# Node
+# ------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ------------------------------
+# Temporary files
+# ------------------------------
+*.tmp
+*.temp
+*.bak
+*.backup

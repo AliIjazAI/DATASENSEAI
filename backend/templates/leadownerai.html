@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lead Owner AI</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/leadownerai.css') }}">
+
+<script
+src="{{ url_for('static', filename='js/leadownerai.js') }}"
+defer></script>
+
+</head>
+
+<body class="bg-slate-950 text-white h-screen overflow-hidden">
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside id="sidebar"
+class="fixed left-0 top-0 h-full w-72 bg-slate-900 border-r border-slate-800 flex flex-col">
+
+    <!-- LOGO -->
+    <div class="h-20 flex items-center px-6 border-b border-slate-800">
+
+        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center">
+            <i class="fas fa-brain text-cyan-400"></i>
+        </div>
+
+        <div class="ml-3">
+            <h2 class="font-bold">DataSensAI</h2>
+            <p class="text-xs text-slate-400">
+                Lead Intelligence
+            </p>
+        </div>
+
+    </div>
+
+    <!-- NAV -->
+
+    <nav class="p-4 space-y-2">
+
+        <a href="/upload"
+        class="nav-link">
+            <i class="fas fa-upload"></i>
+            Upload
+        </a>
+
+        <a href="/cleaner"
+        class="nav-link">
+            <i class="fas fa-broom"></i>
+            Cleaner
+        </a>
+
+        <a href="/visualizer"
+        class="nav-link">
+            <i class="fas fa-chart-line"></i>
+            Visualizer
+        </a>
+
+        <a href="/jpscraper"
+        class="nav-link">
+            <i class="fas fa-briefcase"></i>
+            Job Portal Scraper
+        </a>
+
+        <a href="/leadownerai"
+        class="nav-link active">
+            <i class="fas fa-user-tie"></i>
+            Lead Owner AI
+        </a>
+
+    </nav>
+
+    <div class="mt-auto p-5 border-t border-slate-800">
+
+        <a href="/profile"
+        class="nav-link">
+            <i class="fas fa-user"></i>
+            Profile
+        </a>
+
+        <a href="/logout"
+        class="nav-link text-red-400">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </a>
+
+    </div>
+
+</aside>
+
+<!-- ================= MAIN ================= -->
+
+<div class="ml-72 h-screen flex flex-col">
+
+    <!-- HEADER -->
+
+    <header
+    class="h-20 border-b border-slate-800 bg-slate-950 px-8 flex items-center justify-between">
+
+        <div>
+
+            <h1 class="text-2xl font-bold">
+                Lead Owner AI
+            </h1>
+
+            <p class="text-sm text-slate-400">
+                Business Intelligence & Decision Maker Discovery
+            </p>
+
+        </div>
+
+        <div class="flex gap-3">
+
+            <button
+            onclick="copyData()"
+            class="action-btn">
+
+                <i class="fas fa-copy mr-2"></i>
+                Copy
+
+            </button>
+
+            <button
+            onclick="downloadCSV()"
+            class="action-btn-primary">
+
+                <i class="fas fa-download mr-2"></i>
+                Export CSV
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- DASHBOARD -->
+
+    <main class="flex-1 overflow-hidden p-6">
+
+        <!-- METRICS -->
+
+        <div class="grid grid-cols-5 gap-4 mb-6">
+
+            <div class="metric-card">
+                <div class="metric-title">
+                    Leads
+                </div>
+
+                <div id="metricLeads"
+                class="metric-value">
+                    0
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">
+                    Decision Makers
+                </div>
+
+                <div id="metricDM"
+                class="metric-value">
+                    0
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">
+                    Emails
+                </div>
+
+                <div id="metricEmails"
+                class="metric-value">
+                    0
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">
+                    Avg Score
+                </div>
+
+                <div id="metricScore"
+                class="metric-value">
+                    0
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-title">
+                    High Intent
+                </div>
+
+                <div id="metricHot"
+                class="metric-value">
+                    0
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="grid grid-cols-12 gap-6 h-[calc(100%-120px)]">
+
+            <!-- LEFT -->
+
+            <div class="col-span-3 flex flex-col gap-4">
+
+                <!-- INPUT -->
+
+                <div class="panel flex flex-col">
+
+                    <div class="panel-title">
+                        Websites
+                    </div>
+
+                    <textarea
+                    id="urls"
+                    class="input-area flex-1"
+                    placeholder="https://restaurant.com&#10;https://business.com"></textarea>
+
+                    <button
+                    id="startBtn"
+                    onclick="startScan()"
+                    class="scan-btn">
+
+                        <i class="fas fa-search mr-2"></i>
+                        Start Intelligence Scan
+
+                    </button>
+
+                </div>
+
+                <!-- STATUS -->
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Status
+                    </div>
+
+                    <div id="statusBox"
+                    class="text-cyan-400">
+                        Idle
+                    </div>
+
+                </div>
+
+                <!-- LOGS -->
+
+                <div class="panel flex-1 overflow-hidden">
+
+                    <div class="panel-title">
+                        Live Activity
+                    </div>
+
+                    <div id="logs"
+                    class="logs-panel">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CENTER -->
+
+            <div class="col-span-7 flex flex-col gap-4">
+
+                <!-- SEARCH -->
+
+                <div class="panel">
+
+                    <input
+                    id="search"
+                    onkeyup="filterTable()"
+                    class="search-box"
+                    placeholder="Search results...">
+
+                </div>
+
+                <!-- PROGRESS -->
+
+                <div class="panel">
+
+                    <div class="flex justify-between mb-2">
+
+                        <span>
+                            Scan Progress
+                        </span>
+
+                        <span id="progressText">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-bg">
+
+                        <div
+                        id="progressFill"
+                        class="progress-fill"></div>
+
+                    </div>
+
+                </div>
+
+                <!-- TABLE -->
+
+                <div class="panel flex-1 overflow-auto">
+
+                    <table class="results-table">
+
+                        <thead>
+
+                        <tr>
+
+                            <th>Company</th>
+                            <th>Decision Maker</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Score</th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="resultsBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="col-span-2 flex flex-col gap-4">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Intelligence
+                    </div>
+
+                    <div id="intelBox"
+                    class="text-sm text-slate-400">
+
+                        Start a scan to generate business intelligence insights.
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        Discovery Sources
+                    </div>
+
+                    <div class="space-y-2 text-sm">
+
+                        <div>✓ Website Crawl</div>
+                        <div>✓ About Page</div>
+                        <div>✓ Contact Page</div>
+                        <div>✓ Privacy Policy</div>
+                        <div>✓ Team Pages</div>
+                        <div>✓ Schema.org</div>
+                        <div>✓ Social Links</div>
+                        <div>✓ OpenCorporates</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
